@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Strada | Premium Pizza & Pasta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <h2 class="loader-brand">La Strada</h2>
+            <i class="fas fa-pizza-slice pizza-spinner"></i>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand">La Strada <i class="fas fa-pizza-slice rolling-pizza"></i></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Story</a></li>
+                <li><a href="#menu" class="nav-btn">Menus</a></li>
+            </ul>
+            <div class="cart-icon" id="cart-btn">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart-sidebar">
+            <div class="cart-header">
+                <h2>Your Order</h2>
+                <i class="fas fa-times close-cart" id="close-cart"></i>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Items will be injected here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total-price">$0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-bg">
+            <div class="overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">The Art of <br><span>Real Pizza</span></h1>
+            <p class="hero-subtitle">Wood-fired perfection, authentic Italian recipes.</p>
+            <a href="#menu" class="btn-primary">View Menus</a>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container section-grid">
+            <div class="about-text">
+                <h2 class="section-title">Our Tradition</h2>
+                <p>At La Strada, we believe in the magic of simple, high-quality ingredients. Our dough is fermented for 48 hours, our tomatoes are hand-crushed San Marzano, and our mozzarella is made fresh daily.</p>
+                <p>Experience the true taste of Napoli, right here.</p>
+            </div>
+            <div class="about-image">
+                <img src="unnamed.jpg" alt="Wood-fired Pizza Oven" loading="lazy">
+                <div class="image-accent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="section-title text-center">Our Signature Menu</h2>
+            
+            <div class="menu-search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="menu-search" class="menu-search" placeholder="Search for pizzas, pasta, flavors...">
+            </div>
+            <div class="search-examples text-center">
+                <span style="color: var(--muted-text); font-size: 0.85rem;">Examples: 
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('menu-search').value='Truffle'; document.getElementById('menu-search').dispatchEvent(new Event('input'))" style="color: var(--primary); text-decoration: none;">Truffle</a>, 
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('menu-search').value='Pasta'; document.getElementById('menu-search').dispatchEvent(new Event('input'))" style="color: var(--primary); text-decoration: none;">Pasta</a>, 
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('menu-search').value='Spicy'; document.getElementById('menu-search').dispatchEvent(new Event('input'))" style="color: var(--primary); text-decoration: none;">Spicy</a>
+                </span>
+            </div>
+
+            <div class="menu-grid">
+                
+                <!-- Item 1 -->
+                <div class="menu-card">
+                    <div class="card-img">
+                        <img src="unnamed (1).jpg" alt="Classic Calzone" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart(1, 'Gourmet Calzone', 22.00, 'unnamed (1).jpg')">Add to Order</button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Gourmet Calzone</h3>
+                        <p>Stuffed with premium mozzarella, ricotta, imported pepperoni, and basil.</p>
+                        <span class="price">$22.00</span>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="menu-card">
+                    <div class="card-img">
+                        <img src="unnamed (2).jpg" alt="Carbonara Pasta" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart(2, 'Authentic Carbonara', 24.00, 'unnamed (2).jpg')">Add to Order</button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Authentic Carbonara</h3>
+                        <p>Fresh tagliatelle, guanciale, pecorino romano, egg yolk, black pepper.</p>
+                        <span class="price">$24.00</span>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-card">
+                    <div class="card-img">
+                        <img src="unnamed.jpg" alt="Margherita Pizza" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart(3, 'Classic Margherita', 19.00, 'unnamed.jpg')">Add to Order</button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Classic Margherita</h3>
+                        <p>San Marzano tomato sauce, fresh buffalo mozzarella, basil, extra virgin olive oil.</p>
+                        <span class="price">$19.00</span>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-card">
+                    <div class="card-img">
+                        <img src="diavola.png" alt="Diavola Pizza" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart(4, 'Spicy Diavola', 21.00, 'diavola.png')">Add to Order</button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Spicy Diavola</h3>
+                        <p>San Marzano tomato sauce, mozzarella, spicy Italian pepperoni, Calabrian chili flakes.</p>
+                        <span class="price">$21.00</span>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-card">
+                    <div class="card-img">
+                        <img src="truffle.png" alt="Truffle Mushroom Pizza" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart(5, 'Truffle Mushroom', 25.00, 'truffle.png')">Add to Order</button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Truffle Mushroom</h3>
+                        <p>White cream sauce, roasted wild mushrooms, fior di latte, fresh thyme, truffle oil.</p>
+                        <span class="price">$25.00</span>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-card">
+                    <div class="card-img">
+                        <img src="quattro.png" alt="Quattro Formaggi Pizza" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart(6, 'Quattro Formaggi', 23.00, 'quattro.png')">Add to Order</button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Quattro Formaggi</h3>
+                        <p>Gorgonzola, fontina, parmigiano reggiano, and fresh mozzarella baked to perfection.</p>
+                        <span class="price">$23.00</span>
+                    </div>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="menu-card">
+                    <div class="card-img">
+                        <img src="prosciutto.png" alt="Prosciutto e Rucola Pizza" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart(7, 'Prosciutto e Rucola', 24.00, 'prosciutto.png')">Add to Order</button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Prosciutto e Rucola</h3>
+                        <p>Aura of Parma prosciutto, fresh baby arugula, shaved parmesan, and a drizzle of balsamic glaze.</p>
+                        <span class="price">$24.00</span>
+                    </div>
+                </div>
+
+                <!-- Item 8 -->
+                <div class="menu-card">
+                    <div class="card-img">
+                        <img src="seafood.png" alt="Frutti di Mare Pizza" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart(8, 'Frutti di Mare', 27.00, 'seafood.png')">Add to Order</button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Frutti di Mare</h3>
+                        <p>A luxurious blend of fresh shrimp, calamari, mussels, garlic, and a hint of lemon zest on a light tomato base.</p>
+                        <span class="price">$27.00</span>
+                    </div>
+                </div>
+
+                <!-- Item 9 -->
+                <div class="menu-card">
+                    <div class="card-img">
+                        <img src="vegetariana.png" alt="Rustica Vegetariana Pizza" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="add-to-cart-btn" onclick="addToCart(9, 'Rustica Vegetariana', 20.00, 'vegetariana.png')">Add to Order</button>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <h3>Rustica Vegetariana</h3>
+                        <p>Wood-roasted bell peppers, zucchini, eggplant, caramelized onions, and fresh goat cheese.</p>
+                        <span class="price">$20.00</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h2>La Strada</h2>
+                <p>Authentic Italian Dining</p>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 La Strada. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Cart Icon -->
+    <div id="floating-cart" class="floating-cart" onclick="toggleCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="floating-cart-count">0</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
